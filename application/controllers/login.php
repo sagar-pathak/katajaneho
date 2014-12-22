@@ -4,27 +4,42 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 class Login extends CI_Controller {
-
-    /**
-     * Index Page for this controller.
-     *
-     * Maps to the following URL
-     * 		http://example.com/index.php/welcome
-     * 	- or -
-     * 		http://example.com/index.php/welcome/index
-     * 	- or -
-     * Since this controller is set as the default controller in
-     * config/routes.php, it's displayed at http://example.com/
-     *
-     * So any other public methods not prefixed with an underscore will
-     * map to /index.php/welcome/<method_name>
-     * @see http://codeigniter.com/user_guide/general/urls.html
-     */
+	function __construct(){
+		parent::__construct();	
+        $this->load->helper('form');
+        $this->load->model('authenticate_model','authorize');
+        $this->load->model('userinfo_model','getinfo');
+	}
     public function index() {
-        $this->load->view('welcome_message');
+        $this->load->view('header');
+        $this->load->view('login');
+        $this->load->view('footer');
+    }
+    function authenticate(){
+    	if($_POST){
+     		$username = $this->input->post('username');
+     		$password = $this->input->post('password');
+     		$result = $this->authorize->user($username, $password);
+            if($result){
+                if($result[0]->status == 1){
+                    $userid = $result[0]->uid;
+                    $userinfo = $this->getinfo->user($userid);
+                    $name = $userinfo[0]->firstName." ".$userinfo[0]->middleName." ".$userinfo[0]->lastName;
+                    echo $name;
+                }else{
+                    //user suspended
+                }
+            }else{
+                $errors['login']['message'] = 'Authentication failed. Try again!';
+                $data['errors'] = $errors;
+                redirect('login');
+            }
+     	}else{
+     		show_404();
+     	}
     }
 
-}
+    function setusersession($user){
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
+    }
+}
