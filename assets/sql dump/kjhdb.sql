@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2014 at 12:43 PM
+-- Generation Time: Dec 23, 2014 at 12:43 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -31,16 +31,17 @@ CREATE TABLE IF NOT EXISTS `kjh_login` (
   `username` varchar(500) NOT NULL,
   `password` varchar(500) NOT NULL,
   `status` int(11) NOT NULL COMMENT 'Active/Inactive',
+  `session` varchar(1000) NOT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `kjh_login`
 --
 
-INSERT INTO `kjh_login` (`uid`, `username`, `password`, `status`) VALUES
-(1, 'sagar', 'sagar', 1),
-(2, 'admin', 'admin', 0);
+INSERT INTO `kjh_login` (`uid`, `username`, `password`, `status`, `session`) VALUES
+(1, 'sagar', 'sagar', 1, 'a0de669c0b46fe7e5ed027e23970f7e0f'),
+(2, 'admin', 'admin', 0, '');
 
 -- --------------------------------------------------------
 
