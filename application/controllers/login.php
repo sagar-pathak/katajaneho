@@ -9,6 +9,8 @@ class Login extends CI_Controller {
         $this->load->helper('form');
         $this->load->model('authenticate_model','authorize');
         $this->load->model('userinfo_model','getinfo');
+        $this->load->model('session_model');
+        $this->load->helper('errors');
 	}
     public function index() {
         $this->load->view('header');
@@ -24,10 +26,9 @@ class Login extends CI_Controller {
                 if($result[0]->status == 1){
                     $userid = $result[0]->uid;
                     $userinfo = $this->getinfo->user($userid);
-                    $name = $userinfo[0]->firstName." ".$userinfo[0]->middleName." ".$userinfo[0]->lastName;
-                    echo $name;
+                    $this->setsessionflag($userinfo,$userid);
                 }else{
-                    //user suspended
+                   
                 }
             }else{
                 $errors['login']['message'] = 'Authentication failed. Try again!';
@@ -38,8 +39,12 @@ class Login extends CI_Controller {
      		show_404();
      	}
     }
-
-    function setusersession($user){
-
+    function setsessionflag($userinfo,$userid){
+        $name = $userinfo[0]->firstName." ".$userinfo[0]->middleName." ".$userinfo[0]->lastName;
+        $userdata['name'] = $name;
+        $userdata['email']= $userinfo[0]->email;
+        $userdata['id'] = $userid;
+        $this->session->set_userdata($userdata);
+        $this->session_model->setsession($this->session->userdata('session_id'),$userid);
     }
 }
