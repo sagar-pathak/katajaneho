@@ -10,7 +10,7 @@ class Login extends CI_Controller {
         $this->load->model('authenticate_model','authorize');
         $this->load->model('userinfo_model','getinfo');
         $this->load->model('session_model');
-        $this->load->helper('errors');
+        $this->load->helper('error');
 	}
     public function index() {
         $this->load->view('header');
@@ -22,18 +22,17 @@ class Login extends CI_Controller {
      		$username = $this->input->post('username');
      		$password = $this->input->post('password');
      		$result = $this->authorize->user($username, $password);
+     		print_r($result).PHP_EOL;
             if($result){
                 if($result[0]->status == 1){
                     $userid = $result[0]->uid;
                     $userinfo = $this->getinfo->user($userid);
                     $this->setsessionflag($userinfo,$userid);
                 }else{
-                   
+                   seterror('login','usersuspended','login');
                 }
             }else{
-                $errors['login']['message'] = 'Authentication failed. Try again!';
-                $data['errors'] = $errors;
-                redirect('login');
+            	seterror('login','authfailed','login');
             }
      	}else{
      		show_404();

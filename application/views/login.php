@@ -9,17 +9,20 @@
     
 <!-- template -->
 <div class="container login-box littlewhite">
-<?php 
-if(isset($_POST['errors'])){
-	$errors = $_POST['errors'];
+<?php
+$errorTags = array('authfailed','usersuspended');
+$errorGroup = 'login';
+if(error_exists($errorGroup,$errorTags)){
 ?>
 <div class="alert alert-dismissable alert-danger">
   <button type="button" class="close" data-dismiss="alert">×</button>
-  <strong>Oh snap! </strong><?php echo $errors['login']['message']; ?>
+  <strong>OMG! </strong>
+<?php printerror($errorGroup,$errorTags); ?>
 </div>
 <?php
-	}
+}
 ?>
+
 	<?php 
 	$attributes =  array(
 			'class' => 'form-horizontal'
