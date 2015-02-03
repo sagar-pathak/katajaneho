@@ -6,12 +6,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">KJU Solution</a>
+            <a class="navbar-brand" href="<?php echo base_url();?>">KJH Solution</a>
         </div>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Show Places</a></li>
-                <li><a href="#">Link</a></li>
+                <li <?php if($active == "places"){ echo 'class="active"'; } ?>><a href="<?php echo place_url(); ?>">Show Places</a></li>
+                <li <?php if($active == "users"){ echo 'class="active"'; } ?>><a href="<?php echo user_url(); ?>">Users</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration <b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -30,7 +30,7 @@
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Link</a></li>
-                <li class="dropdown open">
+                <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Dropdown <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Action</a></li>
@@ -43,3 +43,4 @@
             </ul>
         </div>
     </div>
+</div>

@@ -11,8 +11,9 @@ html,body{
 	margin-top:50px;
 	margin-bottom:50px;
 }
+
 .littlewhite{
-	background-color: rgba(255,255,255,0.4);
+	background-color: rgba(255,255,255,0.8);
 }
 
 .footer{
@@ -20,4 +21,45 @@ html,body{
 	bottom: 0;
 	background-color: rgba(255,255,255,0.4);
 	width: 100%;
+}
+.image-walking{
+	background-position: 0px -120px;
+}
+
+.image-car{
+	background-position: 0 -40px;
+}
+
+.image-bus{
+	background-position: 0 -80px;
+}
+
+.mode-icon{
+	width: 10px;
+	background-size: 20px 276px;
+	position: relative;
+	padding: 2px 10px;
+	line-height: 3;
+}
+
+.input-group .form-control{
+	width: 100px;
+	float: right;
+	margin-left:5px;
+}
+
+.list-group h4{
+	margin: 0px;
+}
+
+.list_heading{
+	padding: 10px;
+}
+
+.pointer{
+	cursor: default !important;
+}
+
+.place_name{
+	font-size: 24px;
 }

@@ -13,7 +13,7 @@ class Login extends CI_Controller {
 	}
     public function index() {
     	if($this->session_model->checksession()){
-    		redirect('home');
+    		redirect('places');
     	}else{
 	        $this->load->view('header');
 	        $this->load->view('login_header');
@@ -31,7 +31,7 @@ class Login extends CI_Controller {
                     $userid = $result[0]->uid;
                     $userinfo = $this->getinfo->user($userid);
                     $this->setsessionflag($userinfo,$userid);
-                    redirect('home');
+                    redirect('places');
                 }else{
                    seterror('login','usersuspended','login');
                 }

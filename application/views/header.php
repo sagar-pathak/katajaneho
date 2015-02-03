@@ -14,7 +14,8 @@
         <![endif]-->
         <style>
             .back-image{
-                background-image: url('<?php echo asset_url(); ?>images/background.jpg');
+               /* background-image: url('<?php echo asset_url(); ?>images/background.jpg'); */
+               background-color: #236E23;
             }
             .navbar{
                 border-radius: 0px !important;
