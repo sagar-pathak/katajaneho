@@ -12,6 +12,7 @@
           <script src="<?php echo asset_url(); ?>js/html5shiv.js"></script>
           <script src="<?php echo asset_url(); ?>js/respond.min.js"></script>
         <![endif]-->
+				<script src="<?php echo asset_url();?>js/jQl.min.js"></script>
         <style>
             .back-image{
                /* background-image: url('<?php echo asset_url(); ?>images/background.jpg'); */

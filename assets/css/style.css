@@ -56,6 +56,10 @@ html,body{
 	padding: 10px;
 }
 
+.manage_place{
+	margin-left: 20px;
+}
+
 .pointer{
 	cursor: default !important;
 }

@@ -162,6 +162,16 @@ class Places extends CI_Controller {
 	       redirect('login');
 	    }
 	}
+	
+	public function remove(){
+		if($this->session_model->checksession()){
+			$output = $this->input->post('places');
+			//print_r($output);
+			echo 'sdfd';
+		}else{
+			redirect('login');	
+		}
+	}
 }
 
 ?>
